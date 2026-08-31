@@ -68,6 +68,18 @@ function svgDataUri(svgMarkup) {
   return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svgMarkup)}`;
 }
 
+function imageUrl(key) {
+  if (!key) return null;
+  const clean = String(key).replace(/^\/+/, "");
+  return `${CDN}/${clean}`;
+}
+
+function firstImageKey(item) {
+  const images = Array.isArray(item?.images) ? item.images : [];
+  const first = images.find((value) => typeof value === "string" && value.trim().length > 0);
+  return first || null;
+}
+
 function specsFor(item) {
   const rows = [];
   if (item.category === "property") {
@@ -84,14 +96,20 @@ function specsFor(item) {
 
 function cardMedia(item) {
   const color = item.category === "property" ? "#11705C" : "#4189DD";
-  const src = item.images && item.images[0]
-    ? `${CDN}/listings/${item.images[0]}`
-    : svgDataUri(makePlaceholderSvg(color));
+  const key = firstImageKey(item);
+
+  if (!key) {
+    return `
+      <div class="card__media">
+        ${makePlaceholderSvg(color)}
+      </div>
+    `;
+  }
 
   return `
     <div class="card__media">
       <img
-        src="${src}"
+        src="${imageUrl(key)}"
         alt="${esc(item.title || "Listing image") }"
         width="640"
         height="360"
@@ -827,9 +845,9 @@ function openLightbox(item) {
   const box = $("#lightbox");
   if (!box) return;
 
-  const image = item.images && item.images[0]
-    ? `${CDN}/listings/${item.images[0]}`
-    : svgDataUri(makePlaceholderSvg(item.category === "property" ? "#11705C" : "#4189DD"));
+  const color = item.category === "property" ? "#11705C" : "#4189DD";
+  const key = firstImageKey(item);
+  const image = key ? imageUrl(key) : svgDataUri(makePlaceholderSvg(color));
 
   const specs = buildSpecs(item);
   box.hidden = false;
