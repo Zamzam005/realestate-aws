@@ -164,6 +164,23 @@ app.post("/api/uploads/presign", async (req, res) => {
   }
 });
 
+// --- SPA fallback ---------------------------------------------------------
+// This must stay after express.static() and after every API route, so it only
+// handles browser page loads for valid client routes such as /cars or /contact.
+app.use((req, res, next) => {
+  if (req.method !== "GET") return next();
+
+  if (req.path.startsWith("/api")) {
+    return res.status(404).json({ error: "Not found." });
+  }
+
+  if (req.path.includes(".")) {
+    return next();
+  }
+
+  return res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
 // --- start ----------------------------------------------------------------
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`RealEstate app listening on 0.0.0.0:${PORT}`);
