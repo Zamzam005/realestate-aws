@@ -1,8 +1,22 @@
 /* RealEstate — front end. Talks only to the app's own API on the ALB. */
 
+const CDN_DOMAIN = "https://da7iev0eznc8q.cloudfront.net";
+
 const $ = (id) => document.getElementById(id);
 
 const state = { category: "", city: "" };
+
+// SVG placeholder for missing images - diagonal hatching pattern
+const SVG_PLACEHOLDER = `<svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="hatch" patternUnits="userSpaceOnUse" width="8" height="8">
+      <line x1="0" y1="0" x2="8" y2="8" stroke="#D3DEDA" stroke-width="1"/>
+      <line x1="8" y1="0" x2="0" y2="8" stroke="#D3DEDA" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="320" height="180" fill="#EEF3F0"/>
+  <rect width="320" height="180" fill="url(#hatch)"/>
+</svg>`;
 
 /* ---- live infrastructure ledger ---------------------------------------- */
 async function loadLedger() {
@@ -58,8 +72,13 @@ const esc = (s) =>
 
 function cardFor(item) {
   const place = [item.district, item.city].filter(Boolean).join(", ");
+  const imageHtml = item.images && item.images[0]
+    ? `<img src="${CDN_DOMAIN}/listings/${item.images[0]}" alt="${esc(item.title)}" width="320" height="180" loading="lazy" onerror="this.outerHTML='${SVG_PLACEHOLDER}'" />`
+    : SVG_PLACEHOLDER;
+  
   return `
     <article class="card">
+      <div class="card__image">${imageHtml}</div>
       <div class="card__head">
         <span class="card__tag" data-cat="${esc(item.category)}">${item.category === "property" ? "Property" : "Vehicle"}</span>
         <span class="card__ref">${esc(String(item.listingId).slice(0, 8))}</span>
