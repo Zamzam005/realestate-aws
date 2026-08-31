@@ -13,7 +13,7 @@ import express from "express";
 import helmet from "helmet";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { listListings, getListing, putListing, countByCategory } from "./lib/db.js";
+import { listListings, getListing, putListing, putMessage, countByCategory } from "./lib/db.js";
 import { presignUpload, publicUrlFor } from "./lib/storage.js";
 import { getInstanceIdentity } from "./lib/metadata.js";
 
@@ -119,6 +119,19 @@ app.post("/api/listings", async (req, res) => {
     }
     console.error("putListing failed", err);
     res.status(500).json({ error: "Could not save the listing." });
+  }
+});
+
+app.post("/api/contact", async (req, res) => {
+  try {
+    const item = await putMessage(req.body);
+    res.status(201).json(item);
+  } catch (err) {
+    if (err.name === "ValidationError") {
+      return res.status(400).json({ error: err.message });
+    }
+    console.error("putMessage failed", err);
+    res.status(500).json({ error: "Could not send your message." });
   }
 });
 

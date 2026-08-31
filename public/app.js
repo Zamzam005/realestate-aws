@@ -725,32 +725,59 @@ function bindContactForm() {
   const form = $("#contact-form");
   if (!form) return;
 
-  form.addEventListener("submit", (event) => {
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
+    const submitButton = form.querySelector("button[type='submit']");
+    const note = $("#contact-note");
     const name = $("#contact-name").value.trim();
     const email = $("#contact-email").value.trim();
     const message = $("#contact-message").value.trim();
-    const note = $("#contact-note");
 
-    if (name.length < 2) {
+    if (name.length < 2 || name.length > 80) {
       note.className = "form-note is-error";
-      note.textContent = "Please enter your name.";
+      note.textContent = "Please enter a name between 2 and 80 characters.";
       return;
     }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 120) {
       note.className = "form-note is-error";
-      note.textContent = "Please enter a valid email address.";
+      note.textContent = "Please enter a valid email address up to 120 characters.";
       return;
     }
-    if (message.length < 10) {
+    if (message.length < 10 || message.length > 2000) {
       note.className = "form-note is-error";
-      note.textContent = "Please add a message of at least 10 characters.";
+      note.textContent = "Please add a message between 10 and 2000 characters.";
       return;
     }
 
-    note.className = "form-note is-ok";
-    note.textContent = "Thanks — your message has been received.";
-    form.reset();
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = "Sending...";
+    }
+    note.className = "form-note";
+    note.textContent = "";
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, message }),
+      });
+
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error || "Could not send your message.");
+
+      note.className = "form-note is-ok";
+      note.textContent = "Thanks — your message has been received.";
+      form.reset();
+    } catch (error) {
+      note.className = "form-note is-error";
+      note.textContent = error.message || "Could not send your message.";
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = "Send message";
+      }
+    }
   });
 }
 
