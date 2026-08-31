@@ -142,10 +142,13 @@ async function uploadPhoto(file) {
 
   const put = await fetch(uploadUrl, {
     method: "PUT",
-    headers: { "Content-Type": file.type, "x-amz-server-side-encryption": "AES256" },
+    headers: { "Content-Type": file.type },
     body: file,
   });
-  if (!put.ok) throw new Error("The photo could not be uploaded to storage.");
+  if (!put.ok) {
+    const errorBody = await put.text();
+    throw new Error(`The photo could not be uploaded to storage. ${errorBody}`);
+  }
   return key;
 }
 
