@@ -270,43 +270,43 @@ function propertyPage() {
             <div class="form-grid">
               <div class="field field--full">
                 <label for="property-title">Title</label>
-                <input id="property-title" name="title" type="text" required />
+                <input id="property-title" name="title" type="text" placeholder="3-bedroom house with compound, Hodan" required />
               </div>
               <div class="field field--full">
                 <label for="property-description">Description</label>
-                <textarea id="property-description" name="description" required></textarea>
+                <textarea id="property-description" name="description" placeholder="Condition, water and power, documents available" required></textarea>
               </div>
               <div class="field">
                 <label for="property-price">Price</label>
-                <input id="property-price" name="price" type="number" min="1" required />
+                <input id="property-price" name="price" type="number" min="1" placeholder="45000" required />
               </div>
               <div class="field">
                 <label for="property-city">City</label>
-                <input id="property-city" name="city" type="text" required />
+                <input id="property-city" name="city" type="text" placeholder="Mogadishu" required />
               </div>
               <div class="field">
                 <label for="property-district">District</label>
-                <input id="property-district" name="district" type="text" />
+                <input id="property-district" name="district" type="text" placeholder="Hodan" />
               </div>
               <div class="field">
                 <label for="property-bedrooms">Bedrooms</label>
-                <input id="property-bedrooms" name="bedrooms" type="number" min="0" />
+                <input id="property-bedrooms" name="bedrooms" type="number" min="0" placeholder="3" />
               </div>
               <div class="field">
                 <label for="property-bathrooms">Bathrooms</label>
-                <input id="property-bathrooms" name="bathrooms" type="number" min="0" />
+                <input id="property-bathrooms" name="bathrooms" type="number" min="0" placeholder="2" />
               </div>
               <div class="field">
                 <label for="property-area">Area (m²)</label>
-                <input id="property-area" name="areaSqm" type="number" min="0" />
+                <input id="property-area" name="areaSqm" type="number" min="0" placeholder="240" />
               </div>
               <div class="field">
                 <label for="property-name">Your name</label>
-                <input id="property-name" name="contactName" type="text" required />
+                <input id="property-name" name="contactName" type="text" placeholder="Faduma H." required />
               </div>
               <div class="field">
                 <label for="property-phone">Phone</label>
-                <input id="property-phone" name="contactPhone" type="tel" required />
+                <input id="property-phone" name="contactPhone" type="tel" placeholder="+252 61 555 0142" required />
               </div>
               <div class="field field--full">
                 <label for="property-photo">Photo</label>
@@ -347,51 +347,51 @@ function carsPage() {
             <div class="form-grid">
               <div class="field field--full">
                 <label for="vehicle-title">Title</label>
-                <input id="vehicle-title" name="title" type="text" required />
+                <input id="vehicle-title" name="title" type="text" placeholder="Toyota Noah, clean and reliable" required />
               </div>
               <div class="field field--full">
                 <label for="vehicle-description">Description</label>
-                <textarea id="vehicle-description" name="description" required></textarea>
+                <textarea id="vehicle-description" name="description" placeholder="Condition, water and power, documents available" required></textarea>
               </div>
               <div class="field">
                 <label for="vehicle-price">Price</label>
-                <input id="vehicle-price" name="price" type="number" min="1" required />
+                <input id="vehicle-price" name="price" type="number" min="1" placeholder="45000" required />
               </div>
               <div class="field">
                 <label for="vehicle-city">City</label>
-                <input id="vehicle-city" name="city" type="text" required />
+                <input id="vehicle-city" name="city" type="text" placeholder="Mogadishu" required />
               </div>
               <div class="field">
                 <label for="vehicle-district">District</label>
-                <input id="vehicle-district" name="district" type="text" />
+                <input id="vehicle-district" name="district" type="text" placeholder="Hodan" />
               </div>
               <div class="field">
                 <label for="vehicle-make">Make</label>
-                <input id="vehicle-make" name="make" type="text" required />
+                <input id="vehicle-make" name="make" type="text" placeholder="Toyota" required />
               </div>
               <div class="field">
                 <label for="vehicle-model">Model</label>
-                <input id="vehicle-model" name="model" type="text" required />
+                <input id="vehicle-model" name="model" type="text" placeholder="Noah" required />
               </div>
               <div class="field">
                 <label for="vehicle-year">Year</label>
-                <input id="vehicle-year" name="year" type="number" min="1950" max="2035" required />
+                <input id="vehicle-year" name="year" type="number" min="1950" max="2035" placeholder="2014" required />
               </div>
               <div class="field">
                 <label for="vehicle-mileage">Mileage (km)</label>
-                <input id="vehicle-mileage" name="mileageKm" type="number" min="0" />
+                <input id="vehicle-mileage" name="mileageKm" type="number" min="0" placeholder="118000" />
               </div>
               <div class="field">
                 <label for="vehicle-fuel">Fuel</label>
-                <input id="vehicle-fuel" name="fuel" type="text" />
+                <input id="vehicle-fuel" name="fuel" type="text" placeholder="Petrol" />
               </div>
               <div class="field">
                 <label for="vehicle-name">Your name</label>
-                <input id="vehicle-name" name="contactName" type="text" required />
+                <input id="vehicle-name" name="contactName" type="text" placeholder="Faduma H." required />
               </div>
               <div class="field">
                 <label for="vehicle-phone">Phone</label>
-                <input id="vehicle-phone" name="contactPhone" type="tel" required />
+                <input id="vehicle-phone" name="contactPhone" type="tel" placeholder="+252 61 555 0142" required />
               </div>
               <div class="field field--full">
                 <label for="vehicle-photo">Photo</label>
@@ -459,8 +459,8 @@ function contactPage() {
           <h2>Reach us</h2>
           <ul class="contact-list">
             <li><strong>Phone:</strong> <a href="tel:+252615550142">+252 61 555 0142</a></li>
-            <li><strong>Location:</strong> Mogadishu, Somalia</li>
-            <li><strong>Email:</strong> <a href="mailto:hello@realestate.so">hello@realestate.so</a></li>
+            <li><strong>Email:</strong> <a href="mailto:info@realestate.so">info@realestate.so</a></li>
+            <li><strong>Office:</strong> Hodan District, Mogadishu, Somalia</li>
           </ul>
         </aside>
 
@@ -469,15 +469,15 @@ function contactPage() {
             <div class="form-grid">
               <div class="field">
                 <label for="contact-name">Name</label>
-                <input id="contact-name" name="name" type="text" />
+                <input id="contact-name" name="name" type="text" placeholder="Your name" />
               </div>
               <div class="field">
                 <label for="contact-email">Email</label>
-                <input id="contact-email" name="email" type="email" />
+                <input id="contact-email" name="email" type="email" placeholder="you@example.com" />
               </div>
               <div class="field field--full">
                 <label for="contact-message">Message</label>
-                <textarea id="contact-message" name="message"></textarea>
+                <textarea id="contact-message" name="message" placeholder="How can we help?"></textarea>
               </div>
             </div>
             <button class="btn btn--primary" type="submit">Send message</button>
@@ -631,7 +631,7 @@ function bindPropertyForm() {
 
     const file = $("#property-photo").files[0];
     try {
-      if (file) payload.images = [await uploadPhoto(file)];
+      if (file) payload.images = [await uploadPhoto(file, note)];
       const response = await fetch("/api/listings", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -689,7 +689,7 @@ function bindVehicleForm() {
 
     const file = $("#vehicle-photo").files[0];
     try {
-      if (file) payload.images = [await uploadPhoto(file)];
+      if (file) payload.images = [await uploadPhoto(file, note)];
       const response = await fetch("/api/listings", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -741,32 +741,71 @@ function bindContactForm() {
   });
 }
 
-async function uploadPhoto(file) {
-  const presignResponse = await fetch("/api/uploads/presign", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ filename: file.name, contentType: file.type }),
-  });
+async function uploadPhoto(file, note = null) {
+  try {
+    console.log("[upload] requesting presigned URL", { name: file.name, type: file.type });
+    const presignResponse = await fetch("/api/uploads/presign", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ filename: file.name, contentType: file.type }),
+    });
 
-  if (!presignResponse.ok) {
-    const data = await presignResponse.json().catch(() => ({}));
-    throw new Error(data.error || "The photo could not be prepared for upload.");
+    const presignText = await presignResponse.text();
+    console.log("[upload] presign status", presignResponse.status, presignText);
+
+    if (!presignResponse.ok) {
+      const message = `Presign failed (${presignResponse.status}): ${presignText || "empty response body"}`;
+      if (note) {
+        note.className = "form-note is-error";
+        note.textContent = message;
+      }
+      throw new Error(message);
+    }
+
+    let presignData;
+    try {
+      presignData = JSON.parse(presignText);
+    } catch {
+      const message = `Presign response was not valid JSON: ${presignText || "empty response body"}`;
+      if (note) {
+        note.className = "form-note is-error";
+        note.textContent = message;
+      }
+      throw new Error(message);
+    }
+
+    const { key, uploadUrl } = presignData;
+    console.log("[upload] presign success", { key, uploadUrl });
+
+    const putResponse = await fetch(uploadUrl, {
+      method: "PUT",
+      headers: { "Content-Type": file.type },
+      body: file,
+    });
+
+    const s3Body = await putResponse.text();
+    console.log("[upload] S3 PUT status", putResponse.status, s3Body);
+
+    if (!putResponse.ok) {
+      const message = `S3 upload failed (${putResponse.status}): ${s3Body || "empty response body"}`;
+      if (note) {
+        note.className = "form-note is-error";
+        note.textContent = message;
+      }
+      throw new Error(message);
+    }
+
+    console.log("[upload] successful S3 PUT", { key });
+    return key;
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    console.error("[upload] error:", message);
+    if (note && !note.textContent) {
+      note.className = "form-note is-error";
+      note.textContent = message;
+    }
+    throw error;
   }
-
-  const { key, uploadUrl } = await presignResponse.json();
-
-  const putResponse = await fetch(uploadUrl, {
-    method: "PUT",
-    headers: { "Content-Type": file.type },
-    body: file,
-  });
-
-  if (!putResponse.ok) {
-    const errorBody = await putResponse.text();
-    throw new Error(`The photo could not be uploaded to storage. ${errorBody}`);
-  }
-
-  return key;
 }
 
 function buildSpecs(item) {
