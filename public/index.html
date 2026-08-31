@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>RealEstate — property and vehicles across Somalia</title>
+<meta name="description" content="Browse verified houses, shops, land and vehicles for sale and rent in Mogadishu, Kismayo, Baidoa and Hargeisa." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Public+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+
+<!-- Signature element: the live infrastructure ledger.
+     During the demo, refresh the page and the instance ID changes -
+     that is the Application Load Balancer switching Availability Zones. -->
+<div class="ledger" id="ledger" aria-live="polite">
+  <span class="ledger__dot" aria-hidden="true"></span>
+  <span class="ledger__label">served by</span>
+  <span class="ledger__value" id="ledger-instance">connecting…</span>
+  <span class="ledger__sep" aria-hidden="true">/</span>
+  <span class="ledger__label">zone</span>
+  <span class="ledger__value" id="ledger-az">—</span>
+  <span class="ledger__hint">refresh to switch server</span>
+</div>
+
+<header class="masthead">
+  <a class="brand" href="/">
+    <span class="brand__mark" aria-hidden="true"></span>
+    <span class="brand__name">RealEstate</span>
+  </a>
+  <nav class="masthead__nav">
+    <a href="#listings">Listings</a>
+    <a href="#post">List your property</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero__copy">
+      <p class="eyebrow">Property &amp; vehicles · Somalia</p>
+      <h1>Every house, shop and car worth seeing, in one place.</h1>
+      <p class="hero__lede">
+        Owners post directly. Buyers call directly. No agent fees in between.
+        Search by city, compare prices in the open, and reach the person who
+        actually holds the keys.
+      </p>
+      <div class="hero__actions">
+        <a class="btn btn--solid" href="#listings">Browse listings</a>
+        <a class="btn btn--line" href="#post">List your property</a>
+      </div>
+    </div>
+
+    <aside class="readout" aria-label="Marketplace figures">
+      <h2 class="readout__title">On the market now</h2>
+      <dl class="readout__grid" id="stats">
+        <div><dt>Total listings</dt><dd id="stat-total">—</dd></div>
+        <div><dt>Property</dt><dd id="stat-property">—</dd></div>
+        <div><dt>Vehicles</dt><dd id="stat-vehicle">—</dd></div>
+        <div><dt>Cities</dt><dd id="stat-cities">—</dd></div>
+      </dl>
+      <p class="readout__note">Counts read live from the marketplace database.</p>
+    </aside>
+  </section>
+
+  <section class="listings" id="listings">
+    <div class="listings__bar">
+      <h2>Listings</h2>
+      <div class="filters" role="group" aria-label="Filter listings">
+        <button class="chip is-active" data-category="">All</button>
+        <button class="chip" data-category="property">Property</button>
+        <button class="chip" data-category="vehicle">Vehicles</button>
+        <label class="search">
+          <span class="visually-hidden">Search by city</span>
+          <input type="search" id="city" placeholder="City — Mogadishu, Kismayo…" autocomplete="off" />
+        </label>
+      </div>
+    </div>
+
+    <div class="grid" id="grid" aria-busy="true">
+      <p class="state" id="state">Loading listings…</p>
+    </div>
+  </section>
+
+  <section class="post" id="post">
+    <div class="post__intro">
+      <p class="eyebrow">Sell or rent</p>
+      <h2>List your property or vehicle</h2>
+      <p>
+        Fill in the details and your listing goes live immediately. Buyers see
+        your phone number, so answer calls you do not recognise.
+      </p>
+    </div>
+
+    <div class="post__form">
+      <div class="field">
+        <label for="f-category">What are you listing?</label>
+        <select id="f-category">
+          <option value="property">Property — house, shop, land</option>
+          <option value="vehicle">Vehicle — car, truck, bajaj</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="f-title">Title</label>
+        <input id="f-title" type="text" maxlength="120" placeholder="3-bedroom house with compound, Hodan" />
+      </div>
+
+      <div class="field">
+        <label for="f-description">Description</label>
+        <textarea id="f-description" rows="3" maxlength="2000" placeholder="Condition, water and power, documents available, why you are selling."></textarea>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="f-price">Price (USD)</label>
+          <input id="f-price" type="number" min="1" placeholder="45000" />
+        </div>
+        <div class="field">
+          <label for="f-city">City</label>
+          <input id="f-city" type="text" placeholder="Mogadishu" />
+        </div>
+        <div class="field">
+          <label for="f-district">District <span class="opt">optional</span></label>
+          <input id="f-district" type="text" placeholder="Hodan" />
+        </div>
+      </div>
+
+      <div class="field-row" data-when="property">
+        <div class="field">
+          <label for="f-bedrooms">Bedrooms</label>
+          <input id="f-bedrooms" type="number" min="0" placeholder="3" />
+        </div>
+        <div class="field">
+          <label for="f-bathrooms">Bathrooms</label>
+          <input id="f-bathrooms" type="number" min="0" placeholder="2" />
+        </div>
+        <div class="field">
+          <label for="f-area">Area (sqm)</label>
+          <input id="f-area" type="number" min="0" placeholder="240" />
+        </div>
+      </div>
+
+      <div class="field-row" data-when="vehicle" hidden>
+        <div class="field">
+          <label for="f-make">Make</label>
+          <input id="f-make" type="text" placeholder="Toyota" />
+        </div>
+        <div class="field">
+          <label for="f-model">Model</label>
+          <input id="f-model" type="text" placeholder="Noah" />
+        </div>
+        <div class="field">
+          <label for="f-year">Year</label>
+          <input id="f-year" type="number" min="1950" max="2030" placeholder="2014" />
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="f-name">Your name</label>
+          <input id="f-name" type="text" placeholder="Faduma H." />
+        </div>
+        <div class="field">
+          <label for="f-phone">Phone</label>
+          <input id="f-phone" type="tel" placeholder="+252 61 555 0142" />
+        </div>
+        <div class="field">
+          <label for="f-photo">Photo <span class="opt">optional</span></label>
+          <input id="f-photo" type="file" accept="image/jpeg,image/png,image/webp" />
+        </div>
+      </div>
+
+      <button class="btn btn--solid" id="submit">Publish listing</button>
+      <p class="form-note" id="form-note" role="status"></p>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div>
+    <p class="footer__title">RealEstate</p>
+    <p>A cloud-based marketplace for property and vehicles in Somalia.</p>
+  </div>
+  <div class="footer__meta">
+    <p>Group 1 · Bile Initiative Cloud Programme</p>
+    <p>Running on AWS across two Availability Zones.</p>
+  </div>
+</footer>
+
+<script src="/app.js"></script>
+</body>
+</html>

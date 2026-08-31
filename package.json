@@ -1,0 +1,25 @@
+{
+  "name": "realestate-app",
+  "version": "1.0.0",
+  "description": "RealEstate - cloud-based real estate & vehicle marketplace (Group 1, Bile Initiative)",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "seed": "node seed.js",
+    "create-table": "node create-table.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.600.0",
+    "@aws-sdk/client-s3": "^3.600.0",
+    "@aws-sdk/lib-dynamodb": "^3.600.0",
+    "@aws-sdk/s3-request-presigner": "^3.600.0",
+    "express": "^4.19.2",
+    "helmet": "^7.1.0"
+  },
+  "license": "MIT"
+}
