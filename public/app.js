@@ -254,11 +254,6 @@ function homePage() {
         </div>
         <div id="featured-grid" class="featured-grid"></div>
       </section>
-
-      <div class="cta-banner">
-        <p>List your next property or vehicle and connect with buyers directly.</p>
-        <a class="btn btn--primary" href="/contact">Get started</a>
-      </div>
     </section>
   `;
 }
